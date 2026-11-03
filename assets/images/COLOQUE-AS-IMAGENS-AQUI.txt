@@ -1,0 +1,4 @@
+Coloque aqui suas imagens e informe os caminhos no objeto ASSETS no início de ../game.js.
+Exemplo: background: "assets/images/fundo.png"
+
+Imagens reconhecidas: background, ground, platform, player, playerAttack, enemy, door, heart e gameOver.

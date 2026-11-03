@@ -1,0 +1,68 @@
+* { box-sizing: border-box; }
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #101827;
+  color: #f4f7ff;
+}
+
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: radial-gradient(ellipse at 50% -20%, #263956 0%, #101827 60%);
+}
+
+.page { width: 100%; height: 100%; margin: 0; padding: 0; }
+.eyebrow { margin: 0 0 5px; color: #91a8c9; font-size: 10px; font-weight: 800; letter-spacing: .2em; }
+h1 { margin: 0; font-size: clamp(20px, 3vw, 28px); line-height: 1.1; letter-spacing: -.04em; }
+.game-shell { position: relative; width: 100%; height: 100%; }
+.game-frame { position: relative; width: 100%; height: 100%; overflow: hidden; background: #192842; }
+#game { display: block; width: 100%; height: 100%; touch-action: none; }
+.hearts { position: absolute; z-index: 2; top: 14px; left: 18px; display: flex; gap: 5px; font-size: clamp(23px, 3.5vw, 32px); line-height: 1; color: #ff617d; text-shadow: 0 2px 8px #0008; pointer-events: none; }
+.heart { transition: opacity .18s, transform .18s; }
+.heart.lost { opacity: .24; transform: scale(.82); }
+.touch-controls { display: none; position: absolute; inset: 0; z-index: 3; pointer-events: none; user-select: none; }
+.joystick { position: absolute; bottom: 13px; left: 15px; display: grid; justify-items: center; gap: 3px; width: 112px; color: white; pointer-events: auto; touch-action: none; }
+.joystick-ring { display: grid; place-items: center; width: 88px; height: 88px; border: 2px solid #ffffff70; border-radius: 50%; background: #17233c88; box-shadow: 0 2px 12px #0005; }
+.joystick-knob { width: 38px; height: 38px; border: 2px solid #ffffffb5; border-radius: 50%; background: #dce8ffba; box-shadow: 0 2px 9px #0007; transform: translate(0, 0); }
+.control-caption { font-size: 9px; font-weight: 800; letter-spacing: .16em; text-shadow: 0 1px 5px #000; }
+.action-controls { position: absolute; right: 18px; bottom: 20px; display: flex; align-items: end; gap: 12px; pointer-events: auto; }
+.action-button { display: grid; place-items: center; width: clamp(50px, 8vw, 68px); height: clamp(50px, 8vw, 68px); padding: 0; border: 2px solid #ffffffa6; border-radius: 50%; color: #fff; font: inherit; font-size: 24px; font-weight: 900; background: #253c60bf; box-shadow: 0 3px 10px #0006; touch-action: none; -webkit-tap-highlight-color: transparent; }
+.jump-button { margin-bottom: 20px; background: #31a9a1d9; }
+.attack-button { background: #ed5e79e8; }
+.action-button:active { transform: scale(.92); filter: brightness(1.18); }
+.gameover-actions { position: absolute; z-index: 4; inset: 0; display: grid; place-items: center; background: #08111dcc; }
+.gameover-actions[hidden] { display: none; }
+.gameover-actions button { padding: 12px 20px; border: 0; border-radius: 999px; color: #132033; font: inherit; font-weight: 800; background: #f4d77d; box-shadow: 0 6px 24px #0007; }
+.rotate-message { display: none; }
+.destination { display: grid; min-height: 100vh; min-height: 100dvh; place-items: center; padding: 24px; }
+.destination main { width: min(100%, 560px); padding: clamp(24px, 6vw, 48px); border: 1px solid #526781; border-radius: 16px; background: #192842; box-shadow: 0 24px 70px #0007; }
+.destination h1 { margin: 8px 0 12px; }
+.destination main > p:not(.eyebrow) { color: #b8c5d9; line-height: 1.6; }
+.destination a { display: inline-block; margin-top: 12px; color: #f4d77d; font-weight: 750; }
+
+@media (pointer: coarse) {
+  .touch-controls { display: block; }
+}
+
+@media (orientation: portrait) and (max-width: 900px) {
+  body { overflow: hidden; }
+  .page { display: none; }
+  .rotate-message { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px; text-align: center; background: radial-gradient(ellipse at 50% 30%, #263956 0%, #101827 75%); }
+  .rotate-message h2 { margin: 18px 0 6px; font-size: 25px; }
+  .rotate-message p { max-width: 260px; margin: 0; color: #b8c5d9; line-height: 1.5; }
+  .rotate-icon { color: #f4d77d; font-size: 56px; }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .joystick { bottom: 4px; left: 8px; width: 86px; }
+  .joystick-ring { width: 64px; height: 64px; }
+  .joystick-knob { width: 30px; height: 30px; }
+  .action-controls { right: 10px; bottom: 8px; gap: 8px; }
+  .action-button { width: 48px; height: 48px; font-size: 20px; }
+  .jump-button { margin-bottom: 13px; }
+  .hearts { top: 8px; left: 11px; font-size: 23px; }
+}

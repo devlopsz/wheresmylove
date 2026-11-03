@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#101827" />
+    <meta name="description" content="Um jogo de plataforma para navegador." />
+    <title>Onde Está Meu Amor?</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="game-shell" aria-label="Jogo de plataforma">
+        <div id="rotate-message" class="rotate-message" aria-live="polite">
+          <div class="rotate-icon" aria-hidden="true">▱ ↻</div>
+          <h2>Vire o celular</h2>
+          <p>Este jogo foi feito para jogar com o aparelho deitado.</p>
+        </div>
+        <div class="game-frame">
+          <canvas id="game" width="960" height="540" aria-label="Jogo. Use as setas para andar, espaço para pular e X para atacar."></canvas>
+          <div class="hearts" id="hearts" aria-label="3 vidas">
+            <span class="heart" data-life="0" aria-hidden="true">♥</span>
+            <span class="heart" data-life="1" aria-hidden="true">♥</span>
+            <span class="heart" data-life="2" aria-hidden="true">♥</span>
+          </div>
+          <div id="touch-controls" class="touch-controls" aria-label="Controles de toque">
+            <div class="joystick" id="joystick" aria-label="Analógico para mover" role="application">
+              <div class="joystick-ring"><div class="joystick-knob" id="joystick-knob"></div></div>
+              <span class="control-caption">MOVER</span>
+            </div>
+            <div class="action-controls">
+              <button id="jump-button" class="action-button jump-button" type="button" aria-label="Pular">↑</button>
+              <button id="attack-button" class="action-button attack-button" type="button" aria-label="Atacar">X</button>
+            </div>
+          </div>
+          <div id="gameover-actions" class="gameover-actions" hidden>
+            <button id="restart-button" type="button">Jogar novamente</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
